@@ -1,6 +1,7 @@
 function initPage() {
     const inputEl = document.getElementById("city-input");
     const searchEl = document.getElementById("search-button");
+    const clearEl = document.getElementById("clear-history");
     const nameEl = document.getElementById("city-name");
     const currentPicEl = document.getElementById("current-pic");
     const currentTempEl = document.getElementById("temperature");
@@ -55,8 +56,7 @@ function initPage() {
                     const forecastMonth = forecastDate.getMonth() + 1;
                     const forecastYear = forecastDate.getFullYear();
                     const forecastDateEl = document.createElement("p");
-                    forecastDateEl.setAttribute("class","mt-3 mb-0");
-                    forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
+                    forecastDateEl.setAttribute("class","mt-3 mb-0 forecast-date");                    forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
                     forecastEls[i].append(forecastDateEl);
                     const forecastWeatherEl = document.createElement("img");
                     forecastWeatherEl.setAttribute("src","https://openweathermap.org/img/wn/" + response.data.list[forecastIndex].weather[0].icon + "@2x.png");
@@ -78,6 +78,11 @@ function initPage() {
         getWeather(searchTerm);
         searchHistory.push(searchTerm);
         localStorage.setItem("search",JSON.stringify(searchHistory));
+        renderSearchHistory();
+    })
+
+    clearEl.addEventListener("click",function() {
+        searchHistory = [];
         renderSearchHistory();
     })
 
