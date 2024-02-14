@@ -13,7 +13,7 @@ function initPage() {
     console.log(searchHistory);
 
 
-    const APIKey = "c9a9ed03a355403f4cb9a36e931c0b4a";
+    const APIKey = "f79f07087eb99e850ef0a0405d15421a";
     function getWeather(cityName) {
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + CityName + "&appid=" + APIKey;
         axios.get(queryURL)
